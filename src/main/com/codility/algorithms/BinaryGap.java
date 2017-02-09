@@ -5,7 +5,6 @@ public class BinaryGap {
     public static int getBinaryGapFast(int n) {
         String binaryString = Integer.toBinaryString(n);
         int binaryStringSize = binaryString.length();
-
         int binaryGap = 0;
         for (int i = 0; i < binaryStringSize; i++) {
             int localGap = 0;
