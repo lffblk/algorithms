@@ -9,7 +9,7 @@ public class CyclicRotationTest {
     @Test
     public void cyclicRotationStressTest() {
         Random random = new Random();
-        for (int iter = 0; iter < 1000000; iter++) {
+        for (int iter = 0; iter < 10000; iter++) {
             int n = random.nextInt(101);
             int k = random.nextInt(101);
             int a[] = new int[n];
