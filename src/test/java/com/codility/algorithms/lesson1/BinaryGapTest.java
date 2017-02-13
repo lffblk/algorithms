@@ -1,5 +1,6 @@
-package com.codility.algorithms;
+package com.codility.algorithms.lesson1;
 
+import com.codility.algorithms.lesson1.BinaryGap;
 import org.junit.Test;
 
 public class BinaryGapTest {

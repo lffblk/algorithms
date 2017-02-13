@@ -1,5 +1,6 @@
-package com.codility.algorithms;
+package com.codility.algorithms.lesson2;
 
+import com.codility.algorithms.lesson2.OddOccurrencesInArray;
 import org.junit.Test;
 
 import java.util.*;
