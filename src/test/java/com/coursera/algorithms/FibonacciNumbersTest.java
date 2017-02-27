@@ -8,7 +8,7 @@ public class FibonacciNumbersTest {
 
     @Test
     public void stressTestFibonacciNumbers() {
-        for (int n = 0; n < 40; n++) {
+        for (int n = 0; n < 35; n++) {
             BigInteger fibonacciNumber1 = FibonacciNumbers.getFibonacciNumberSlow(n);
             BigInteger fibonacciNumber2 = FibonacciNumbers.getFibonacciNumberFast(n);
             if (!fibonacciNumber1.equals(fibonacciNumber2)) {

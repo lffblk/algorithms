@@ -1,5 +1,6 @@
 package com.codility.algorithms.lesson2;
 
+import com.TestUtils;
 import com.codility.algorithms.lesson2.OddOccurrencesInArray;
 import org.junit.Test;
 
@@ -31,20 +32,7 @@ public class OddOccurrencesInArrayTest {
             a[i+1] = element;
         }
         a[n-1] = random.nextInt(randomBound);
-        shuffleArray(a);
+        TestUtils.shuffleArray(a);
         return a;
-    }
-
-    private static void shuffleArray(int[] ar)
-    {
-        Random rnd = ThreadLocalRandom.current();
-        for (int i = ar.length - 1; i > 0; i--)
-        {
-            int index = rnd.nextInt(i + 1);
-            // Simple swap
-            int a = ar[index];
-            ar[index] = ar[i];
-            ar[i] = a;
-        }
     }
 }
