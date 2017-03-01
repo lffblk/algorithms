@@ -1,21 +1,38 @@
 package com.coursera.algorithms;
 
+import com.StressTestSuit;
+import com.Tester;
 import org.junit.Test;
 
-import java.math.BigInteger;
+import static com.TestUtils.getRandom;
 
-public class FibonacciNumbersTest {
+public class FibonacciNumbersTest implements StressTestSuit {
+
+    private int n;
 
     @Test
-    public void stressTestFibonacciNumbers() {
-        for (int n = 0; n < 35; n++) {
-            BigInteger fibonacciNumber1 = FibonacciNumbers.getFibonacciNumberSlow(n);
-            BigInteger fibonacciNumber2 = FibonacciNumbers.getFibonacciNumberFast(n);
-            if (!fibonacciNumber1.equals(fibonacciNumber2)) {
-                System.out.println("Error! n = " + n + ", fibonacciNumber1 = " + fibonacciNumber1
-                        + ", fibonacciNumber2 = " + fibonacciNumber2);
-                break;
-            }
-        }
+    @Override
+    public void run() {
+        Tester.test(35, this);
+    }
+
+    @Override
+    public void generateArguments() {
+        n = getRandom().nextInt(35);
+    }
+
+    @Override
+    public Object getResultSlow() {
+        return FibonacciNumbers.getFibonacciNumberSlow(n);
+    }
+
+    @Override
+    public Object getResultFast() {
+        return FibonacciNumbers.getFibonacciNumberFast(n);
+    }
+
+    @Override
+    public String generateExceptionMessage(Object slowResult, Object fastResult) {
+        return "Error! n = " + n + ", slowResult = " + slowResult + ", fastResult = " + fastResult;
     }
 }

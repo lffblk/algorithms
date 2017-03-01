@@ -1,33 +1,49 @@
 package com.codility.algorithms.lesson3;
 
+import com.StressTestSuit;
+import com.Tester;
 import org.junit.Test;
 
-import java.util.Random;
+import static com.TestUtils.getRandom;
 
-public class FrogJmpTest {
+public class FrogJmpTest implements StressTestSuit {
+
+    private int x;
+    private int y;
+    private int d;
+
     @Test
-    public void frogJumpStressTest() {
-        Random random = new Random();
-        for(int i = 0; i < 1000000; i++) {
-            int etalonY = random.nextInt(100) + 1;
-            int etalonX = random.nextInt(etalonY) + 1;
-            int etalonD = random.nextInt(100) + 1;
+    @Override
+    public void run() {
+        Tester.test(1000000, this);
+    }
 
-            int x1 = etalonX;
-            int x2 = etalonX;
-            int y1 = etalonY;
-            int y2 = etalonY;
-            int d1 = etalonD;
-            int d2 = etalonD;
+    @Override
+    public void generateArguments() {
+        y = getRandom().nextInt(100) + 1;
+        x = getRandom().nextInt(y) + 1;
+        d = getRandom().nextInt(100) + 1;
+    }
 
-            int result1 = FrogJmp.frogJmpSlow(x1, y1, d1);
-            int result2 = FrogJmp.frogJmpFast(x2, y2, d2);
+    @Override
+    public Object getResultSlow() {
+        int mutableX = x;
+        int mutableY = y;
+        int mutableD = d;
+        return FrogJmp.frogJmpSlow(mutableX, mutableY, mutableD);
+    }
 
-            if (result1 != result2) {
-                System.out.println("Error! x = " + etalonX + ", y = " + etalonY + ", d = " + etalonD
-                        + ", result1 = " + result1 + ", result2 = " + result2);
-                break;
-            }
-        }
+    @Override
+    public Object getResultFast() {
+        int mutableX = x;
+        int mutableY = y;
+        int mutableD = d;
+        return FrogJmp.frogJmpFast(mutableX, mutableY, mutableD);
+    }
+
+    @Override
+    public String generateExceptionMessage(Object slowResult, Object fastResult) {
+        return "Error! x = " + x + ", y = " + y + ", d = " + d
+                + ", slowResult = " + slowResult + ", fastResult = " + fastResult;
     }
 }

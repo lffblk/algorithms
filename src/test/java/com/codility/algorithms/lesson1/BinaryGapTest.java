@@ -1,19 +1,38 @@
 package com.codility.algorithms.lesson1;
 
-import com.codility.algorithms.lesson1.BinaryGap;
+import com.StressTestSuit;
+import com.Tester;
 import org.junit.Test;
 
-public class BinaryGapTest {
+import static com.TestUtils.getRandom;
+
+public class BinaryGapTest implements StressTestSuit {
+
+    private int n;
 
     @Test
-    public void stressTestBinaryGap() {
-        for (int n = 1; n < 1000000; n++) {
-            int binaryGap1 = BinaryGap.getBinaryGapSlow(n);
-            int binaryGap2 = BinaryGap.getBinaryGapFast(n);
-            if (binaryGap1 != binaryGap2) {
-                System.out.println("Error! n = " + n + ", binaryGap1 = " + binaryGap1 + ", binaryGap2 = " + binaryGap2);
-                break;
-            }
-        }
+    @Override
+    public void run() {
+        Tester.test(1000000, this);
+    }
+
+    @Override
+    public void generateArguments() {
+        n = getRandom().nextInt(1000000);
+    }
+
+    @Override
+    public Object getResultSlow() {
+        return BinaryGap.getBinaryGapSlow(n);
+    }
+
+    @Override
+    public Object getResultFast() {
+        return BinaryGap.getBinaryGapFast(n);
+    }
+
+    @Override
+    public String generateExceptionMessage(Object slowResult, Object fastResult) {
+        return "Error! n = " + n + ", slowResult = " + slowResult + ", fastResult = " + fastResult;
     }
 }

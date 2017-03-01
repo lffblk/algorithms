@@ -1,30 +1,44 @@
 package com.codility.algorithms.lesson2;
 
+import com.StressTestSuit;
+import com.TestUtils;
+import com.Tester;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Random;
 
-public class CyclicRotationTest {
+import static com.TestUtils.getRandom;
+
+public class CyclicRotationTest implements StressTestSuit {
+
+    private int k;
+    private int[] a;
+
     @Test
-    public void cyclicRotationStressTest() {
-        Random random = new Random();
-        for (int iter = 0; iter < 10000; iter++) {
-            int n = random.nextInt(101);
-            int k = random.nextInt(101);
-            int a[] = new int[n];
-            for (int i = 0; i < n; i++) {
-                a[i] = random.nextInt(1001);
-            }
+    @Override
+    public void run() {
+        Tester.test(10000, this);
+    }
 
-            int[] result1 = CyclicRotation.cyclicRotationSlow(Arrays.copyOf(a, n), k);
-            int[] result2 = CyclicRotation.cyclicRotationFast(Arrays.copyOf(a, n), k);
+    @Override
+    public void generateArguments() {
+        k = getRandom().nextInt(101);
+        a = TestUtils.generateRandomArray(101, 1001);
+    }
 
-            if (!Arrays.equals(result1, result2)) {
-                System.out.println("Error! n = " + n + ", k = " + k + ", a = " + Arrays.toString(a)
-                        + ", result1 = " + Arrays.toString(result1) + ", result2 = " + Arrays.toString(result2));
-                break;
-            }
-        }
+    @Override
+    public Object getResultSlow() {
+        return CyclicRotation.cyclicRotationSlow(Arrays.copyOf(a, a.length), k);
+    }
+
+    @Override
+    public Object getResultFast() {
+        return CyclicRotation.cyclicRotationFast(Arrays.copyOf(a, a.length), k);
+    }
+
+    @Override
+    public String generateExceptionMessage(Object slowResult, Object fastResult) {
+        return "Error! n = " + a.length + ", k = " + k + ", a = " + Arrays.toString(a)
+                + ", slowResult = " + Arrays.toString((int[])slowResult) + ", fastResult = " + Arrays.toString((int[])fastResult);
     }
 }

@@ -1,28 +1,20 @@
 package com.codility.algorithms.lesson2;
 
+import com.StressTestSuit;
 import com.TestUtils;
-import com.codility.algorithms.lesson2.OddOccurrencesInArray;
+import com.Tester;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class OddOccurrencesInArrayTest {
+import static com.TestUtils.getRandom;
 
-    @Test
-    public void stressTestOddOccurrencesInArray() {
-        for (int n = 1; n < 10000; n = n + 2) {
-            int[] a = fillArray(n);
-            int result1 = OddOccurrencesInArray.getResultSlow(Arrays.copyOf(a, a.length));
-            int result2 = OddOccurrencesInArray.getResultFast(Arrays.copyOf(a, a.length));
-            if (result1 != result2) {
-                System.out.println("Error! n = " + n + ", result1 = " + result1 + ", result2 = " + result2);
-                break;
-            }
-        }
-    }
+public class OddOccurrencesInArrayTest implements StressTestSuit {
 
-    private static int[] fillArray(int n) {
+    private int n;
+    private int[] a;
+
+    private int[] fillArray(int n) {
         int randomBound = 1000;
         Random random = new Random();
         int[] a = new int[n];
@@ -34,5 +26,34 @@ public class OddOccurrencesInArrayTest {
         a[n-1] = random.nextInt(randomBound);
         TestUtils.shuffleArray(a);
         return a;
+    }
+
+    @Test
+    @Override
+    public void run() {
+        Tester.test(10000, this);
+    }
+
+    @Override
+    public void generateArguments() {
+        n = getRandom().nextInt(10000) + 1;
+        if (n % 2 == 0) n++;
+        a = fillArray(n);
+    }
+
+    @Override
+    public Object getResultSlow() {
+        return OddOccurrencesInArray.getResultSlow(Arrays.copyOf(a, a.length));
+    }
+
+    @Override
+    public Object getResultFast() {
+        return OddOccurrencesInArray.getResultFast(Arrays.copyOf(a, a.length));
+    }
+
+    @Override
+    public String generateExceptionMessage(Object slowResult, Object fastResult) {
+        return "Error! n = " + n + ", a = " + Arrays.toString(a) + ", slowResult = " +
+                slowResult + ", fastResult = " + fastResult;
     }
 }
