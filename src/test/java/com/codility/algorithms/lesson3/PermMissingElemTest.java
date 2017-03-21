@@ -1,22 +1,21 @@
 package com.codility.algorithms.lesson3;
 
-import com.StressTestSuit;
+import com.AbstractStressTest;
 import com.TestUtils;
-import com.Tester;
 import org.junit.Test;
 
 import java.util.Arrays;
 
 import static com.TestUtils.getRandom;
 
-public class PermMissingElemTest implements StressTestSuit {
+public class PermMissingElemTest extends AbstractStressTest {
 
     private int[] a;
 
     @Test
     @Override
     public void run() {
-        Tester.test(1000, this);
+        run(1000);
     }
 
     @Override

@@ -1,19 +1,18 @@
 package com.coursera.algorithms;
 
-import com.StressTestSuit;
-import com.Tester;
+import com.AbstractStressTest;
 import org.junit.Test;
 
 import static com.TestUtils.getRandom;
 
-public class FibonacciNumbersTest implements StressTestSuit {
+public class FibonacciNumbersTest extends AbstractStressTest {
 
     private int n;
 
     @Test
     @Override
     public void run() {
-        Tester.test(35, this);
+        run(35);
     }
 
     @Override

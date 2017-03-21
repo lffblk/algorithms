@@ -1,20 +1,19 @@
 package com.codility.algorithms.lesson4;
 
-import com.StressTestSuit;
+import com.AbstractStressTest;
 import com.TestUtils;
-import com.Tester;
 import org.junit.Test;
 
 import java.util.Arrays;
 
-public class MissingIntegerTest implements StressTestSuit {
+public class MissingIntegerTest extends AbstractStressTest {
 
     private int[] a;
 
     @Test
     @Override
     public void run() {
-        Tester.test(10000, this);
+        run(10000);
     }
 
     @Override

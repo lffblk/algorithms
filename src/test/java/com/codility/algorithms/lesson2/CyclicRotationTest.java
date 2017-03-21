@@ -1,15 +1,14 @@
 package com.codility.algorithms.lesson2;
 
-import com.StressTestSuit;
+import com.AbstractStressTest;
 import com.TestUtils;
-import com.Tester;
 import org.junit.Test;
 
 import java.util.Arrays;
 
 import static com.TestUtils.getRandom;
 
-public class CyclicRotationTest implements StressTestSuit {
+public class CyclicRotationTest extends AbstractStressTest {
 
     private int k;
     private int[] a;
@@ -17,7 +16,7 @@ public class CyclicRotationTest implements StressTestSuit {
     @Test
     @Override
     public void run() {
-        Tester.test(10000, this);
+        run(10000);
     }
 
     @Override

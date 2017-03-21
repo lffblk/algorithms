@@ -1,19 +1,18 @@
 package com.codility.algorithms.lesson1;
 
-import com.StressTestSuit;
-import com.Tester;
+import com.AbstractStressTest;
 import org.junit.Test;
 
 import static com.TestUtils.getRandom;
 
-public class BinaryGapTest implements StressTestSuit {
+public class BinaryGapTest extends AbstractStressTest {
 
     private int n;
 
     @Test
     @Override
     public void run() {
-        Tester.test(1000000, this);
+        run(1000000);
     }
 
     @Override

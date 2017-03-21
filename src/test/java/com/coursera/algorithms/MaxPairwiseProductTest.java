@@ -1,7 +1,6 @@
 package com.coursera.algorithms;
 
-import com.StressTestSuit;
-import com.Tester;
+import com.AbstractStressTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,14 +8,14 @@ import java.util.List;
 
 import static com.TestUtils.getRandom;
 
-public class MaxPairwiseProductTest implements StressTestSuit {
+public class MaxPairwiseProductTest extends AbstractStressTest {
 
     private List<Integer> arr;
 
     @Test
     @Override
     public void run() {
-        Tester.test(100, this);
+        run(100);
     }
 
     @Override

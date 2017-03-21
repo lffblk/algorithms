@@ -35,12 +35,7 @@ public class MissingInteger {
                 counts[element]++;
             }
         }
-
         int result = 1;
-        System.out.println("a = " + Arrays.toString(a));
-        System.out.println("counts = " + Arrays.toString(counts));
-        System.out.println("result = " + result);
-
         for (int i = 1; i < counts.length; i++) {
             if (counts[i] == 0) return i;
             if (counts[i] == result) result++;

@@ -1,15 +1,14 @@
 package com.codility.algorithms.lesson2;
 
-import com.StressTestSuit;
+import com.AbstractStressTest;
 import com.TestUtils;
-import com.Tester;
 import org.junit.Test;
 
 import java.util.*;
 
 import static com.TestUtils.getRandom;
 
-public class OddOccurrencesInArrayTest implements StressTestSuit {
+public class OddOccurrencesInArrayTest extends AbstractStressTest {
 
     private int n;
     private int[] a;
@@ -31,7 +30,7 @@ public class OddOccurrencesInArrayTest implements StressTestSuit {
     @Test
     @Override
     public void run() {
-        Tester.test(10000, this);
+        run(10000);
     }
 
     @Override

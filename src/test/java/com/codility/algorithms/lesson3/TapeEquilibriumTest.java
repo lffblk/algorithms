@@ -1,20 +1,19 @@
 package com.codility.algorithms.lesson3;
 
-import com.StressTestSuit;
+import com.AbstractStressTest;
 import com.TestUtils;
-import com.Tester;
 import org.junit.Test;
 
 import java.util.Arrays;
 
-public class TapeEquilibriumTest implements StressTestSuit {
+public class TapeEquilibriumTest extends AbstractStressTest {
 
     private int[] a;
 
     @Test
     @Override
     public void run() {
-        Tester.test(100000, this);
+        run(100000);
     }
 
     @Override

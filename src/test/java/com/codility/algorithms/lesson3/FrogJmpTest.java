@@ -1,12 +1,11 @@
 package com.codility.algorithms.lesson3;
 
-import com.StressTestSuit;
-import com.Tester;
+import com.AbstractStressTest;
 import org.junit.Test;
 
 import static com.TestUtils.getRandom;
 
-public class FrogJmpTest implements StressTestSuit {
+public class FrogJmpTest extends AbstractStressTest {
 
     private int x;
     private int y;
@@ -15,7 +14,7 @@ public class FrogJmpTest implements StressTestSuit {
     @Test
     @Override
     public void run() {
-        Tester.test(1000000, this);
+        run(1000000);
     }
 
     @Override
