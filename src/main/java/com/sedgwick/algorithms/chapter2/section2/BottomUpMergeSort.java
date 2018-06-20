@@ -1,5 +1,11 @@
 package com.sedgwick.algorithms.chapter2.section2;
 
+/*
+ * 1. Sort every 1 elements of array with step 2
+ * 2. Sort every 2 elements of array with step 4
+ * 3. Sort every 4 elements of array with step 8
+ * 4. ...
+ */
 public class BottomUpMergeSort<Item extends Comparable<Item>> extends MergeSort<Item> {
 
     @Override

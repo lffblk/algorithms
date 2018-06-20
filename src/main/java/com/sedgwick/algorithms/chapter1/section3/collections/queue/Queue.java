@@ -1,6 +1,6 @@
 package com.sedgwick.algorithms.chapter1.section3.collections.queue;
 
-import com.sedgwick.algorithms.chapter1.section3.collections.Collection;
+import com.sedgwick.algorithms.chapter1.Collection;
 
 public interface Queue<Item> extends Collection<Item> {
 

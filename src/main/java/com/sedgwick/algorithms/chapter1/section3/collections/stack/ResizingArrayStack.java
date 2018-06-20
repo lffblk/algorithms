@@ -1,15 +1,15 @@
 package com.sedgwick.algorithms.chapter1.section3.collections.stack;
 
+import com.sedgwick.algorithms.chapter1.ResizingArrayCollection;
+
 import java.util.Iterator;
 
-public class ResizingArrayStack<Item> implements Stack<Item> {
-
-    private Item[] elements;
-    private int currentSize;
+public class ResizingArrayStack<Item extends Comparable<Item>>
+        extends ResizingArrayCollection<Item> implements Stack<Item> {
 
     @SuppressWarnings("unchecked")
     public ResizingArrayStack(int capacity) {
-        elements = (Item[]) new Object[capacity];
+        super(capacity);
     }
 
     public boolean isEmpty() {
@@ -34,13 +34,6 @@ public class ResizingArrayStack<Item> implements Stack<Item> {
             resize(elements.length / 2);
         }
         return item;
-    }
-
-    @SuppressWarnings("unchecked")
-    private void resize(int newSize) {
-        Item[] temp = (Item[]) new Object[newSize];
-        System.arraycopy(elements, 0, temp, 0, currentSize);
-        elements = temp;
     }
 
     @Override

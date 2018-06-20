@@ -2,6 +2,10 @@ package com.sedgwick.algorithms.chapter2.section2;
 
 import com.sedgwick.algorithms.chapter2.AbstractSort;
 
+/*
+ * 1. Bisect initial array
+ * 2. Recursively sort left and right parts of initial array
+ */
 public class MergeSort<Item extends Comparable<Item>> extends AbstractSort<Item> {
 
     protected Item[] temp;
